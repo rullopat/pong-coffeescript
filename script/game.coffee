@@ -31,9 +31,11 @@ class Game
         entity.draw(@context)
 
   start: ->
-    @lastUpdateTime = new Date().getTime()
+    self = this
 
-    onFrame( () -> @fixedTimeStep() )
+    self.lastUpdateTime = new Date().getTime()
+
+    onFrame( () -> self.fixedTimeStep() )
 
   # Instead of relying on a timer, we use a special browser function called
   # `requestAnimationFrame(callback)`. It calls the `callback` at interval
