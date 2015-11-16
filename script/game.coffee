@@ -1,5 +1,5 @@
 class Game
-  keys =
+  @keys =
     32: 'space',
     37: 'left',
     38: 'up',
@@ -7,17 +7,19 @@ class Game
     40: 'down'
 
   constructor: (canvas) ->
+    self = this
+
     @context = canvas.getContext("2d")
     @width = canvas.width
     @height = canvas.height
 
     @keyPressed = {}
 
-    $(canvas).on "keydown keyup", (e) ->
-      keyName = @keys[e.which]
+    $(canvas).on 'keydown keyup', (e) ->
+      keyName = Game.keys[e.which]
 
       if keyName
-        @keyPressed[keyName] = e.type == "keydown"
+        self.keyPressed[keyName] = e.type == 'keydown'
         e.preventDefault()
 
   update: ->

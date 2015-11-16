@@ -33,7 +33,7 @@ class Ball extends Entity
     super
 
     if @intersect(game.player)
-      hitter = game.Player
+      hitter = game.player
     else if @intersect(game.bot)
       hitter = game.bot
 
@@ -45,17 +45,17 @@ class Ball extends Entity
 
       @blip.play()
 
-      # Rebound if it hits top or bottom
-      if @y < 0 || @y + @height > game.height
-        @yVelocity *= 1
-        @blip.play()
+    # Rebound if it hits top or bottom
+    if @y < 0 or @y + @height > game.height
+      @yVelocity *= -1
+      @blip.play()
 
-      # Off screen on left. Bot wins.
-      if @x < -@width
-        game.bot.score += 1
-        @reset()
+    # Off screen on left. Bot wins.
+    if @x < -@width
+      game.bot.score += 1
+      @reset()
 
-      # Off screen on right. Player wins.
-      if @x > game.width
-        game.player.score += 1
-        @reset()
+    # Off screen on right. Player wins.
+    if @x > game.width
+      game.player.score += 1
+      @reset()
