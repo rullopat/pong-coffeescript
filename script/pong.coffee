@@ -20,4 +20,4 @@ game.entities = [
 ]
 
 game.start()
-$('canvas')[0].focus
+$('canvas')[0].focus()
